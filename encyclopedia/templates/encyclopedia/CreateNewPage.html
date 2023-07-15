@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{% static 'encyclopedia/NewPage.css' %}" rel="stylesheet">
+        <title>New Page</title>
+    </head>
+    <body>
+        <div class="row">
+            <div class="nPageForm">
+                <div class="header">
+                    <label style="padding-bottom: 10px">Create New Page</label>
+                </div>
+                
+                <form action="{% url 'NewPage' %}" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="left">
+                                    <label class="TitleLabel">Title:</label>
+                                </td>
+                                <td class="left">
+                                    <input type="text" name="quantity" class="titlebar" placeholder="Title">
+                                </td>        
+                            </tr>
+                            <tr>
+                                <td class="left">
+                                    <label class="MarkDLabel">Enter Your MarkDown:</label>
+                                </td>
+                                <td class="left">
+                                    <textarea rows="20" cols="60" name="text" placeholder="Text"></textarea>
+                                </td>
+                            </tr>
+                            <tr style="text-align: right;">
+                                <td class="right"></td>
+                                <td class="right"><button type="submit">Submit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                
+                <li><a href="{% url 'index' %}">Home</a></li>
+                
+            </div>
+        </div>
+        {% if message %}
+            <div style="color: red; margin-top: 15px; font-size: 32px;">{{ message }}</div>
+        {% endif %}
+        
+    </body>
+</html>
+    
