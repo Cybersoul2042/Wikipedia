@@ -20,5 +20,15 @@ def nPage(request):
                         "message": "Entry Already Exists"
                 })
         util.save_entry(title, text)
+        return render(request, "encyclopedia/Createnewpage.html",{
+            "entryTitle": title
+        })
     return render(request, "encyclopedia/Createnewpage.html")
+
+def ShowPage(request, entry):
+    EntryContent = util.get_entry(entry)
+    return render(request, 'encyclopedia/EntryPage.html',{
+        "pageContent": EntryContent
+    })
+                
 
