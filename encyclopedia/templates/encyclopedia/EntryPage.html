@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'encyclopedia/EntryPage.css' %}">
+    </head>
+    <body>
+        <md-block>
+            {{ pageContent }}
+            <script src="prism.js"></script>
+        </md-block>
+    </body>
+</html>
