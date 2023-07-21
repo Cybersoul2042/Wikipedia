@@ -1,17 +1,10 @@
-md-block{
-    text-align: left;
-    font-size: 24px;
-}
-
 h1{
     border-bottom: 1px solid black;
     padding-bottom: 10px;
+    text-align: left;
 }
 
-label{
-    font-size: 20px;
-}
-
-a{
+textarea{
+    resize: none;
     font-size: 20px;
 }

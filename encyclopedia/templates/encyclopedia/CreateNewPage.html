@@ -16,7 +16,7 @@
                     <label style="padding-bottom: 10px">Create New Page</label>
                 </div>
                 
-                <form action="{% url 'EntryPage' %}" method="POST">
+                <form method="POST">
                     {% csrf_token %}
                     <table>
                         <tbody>

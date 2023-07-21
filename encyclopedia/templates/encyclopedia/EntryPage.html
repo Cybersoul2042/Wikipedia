@@ -3,16 +3,28 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+        
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{% static 'encyclopedia/EntryPage.css' %}">
+        <title>{{ EntryTitle }}</title>
     </head>
     <body>
+        <h1>{{ EntryTitle }}</h1>
         <md-block>
+            <script type="module" src="https://md-block.verou.me/md-block.js"></script>
             {{ pageContent }}
             <script src="prism.js"></script>
         </md-block>
+        <a href="{% url 'EntryEdit' EntryTitle %}">Edit Page</a>
+        <label>You Can Also Visit: </label>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Home</a>
+            </li>
+        </ul>
+        
+        
     </body>
 </html>

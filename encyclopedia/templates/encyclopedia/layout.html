@@ -6,15 +6,21 @@
     <head>
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'encyclopedia\styles.css' %}">
     </head>
     <body>
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
                 <h2>Wiki</h2>
-                <form>
+                <form method="POST">
+                    {% csrf_token %}
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
                 </form>
+                
+                {% if message %}
+                    <h4 style="color: red;">{{ message }}</h4>
+                {% endif %}
+                    
                 <div>
                     <a href="{% url 'index' %}">Home</a>
                 </div>
@@ -22,7 +28,7 @@
                     <a href="{% url 'NewPage' %}">Create New Page</a>
                 </div>
                 <div>
-                    Random Page
+                    <a href="{% url 'EntryPage' random %}">Random Page</a>
                 </div>
                 {% block nav %}
                 {% endblock %}
