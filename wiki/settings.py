@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'encyclopedia',
+    'markdownify.apps.MarkdownifyConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+MARKDOWNIFY = {
+    "default":{
+        "WHITELIST_TAGS":{
+            'a', 'p', 
+            'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7',
+            'ul', 'li', 'span',
+        }
+        
+    }
+ 
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -118,4 +131,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/encyclopedia/'
+STATIC_URL = '/static/'

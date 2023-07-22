@@ -6,11 +6,32 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'encyclopedia\Edit.css' %}">
+        <link rel="stylesheet" href="{% static 'encyclopedia/Edit.css' %}">
         <title>Editing: {{ Title }}</title>
     </head>
     <body>
         <h1>Edit Your Entry</h1>
-        <textarea rows="20" cols="100" placeholder="Content Text">{{ pageContent }}</textarea>
+        <form method="Post">
+            {% csrf_token %}
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="left">
+                                <label class="MarkDLabel">Edit Entry: </label>
+                            </td>
+                            <td class="left">
+                                <textarea  rows="20" cols="80" name="text" placeholder="Text">{{pageContent}}</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="right"></td>
+                            <td class="right"><button type="submit">Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        
     </body>
 </html>

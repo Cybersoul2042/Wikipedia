@@ -1,3 +1,7 @@
+body{
+    font-family: Arial, Helvetica, sans-serif
+}
+
 h1{
     border-bottom: 1px solid black;
     padding-bottom: 10px;
@@ -6,5 +10,24 @@ h1{
 
 textarea{
     resize: none;
+    padding: 10px;
     font-size: 20px;
+    margin-left: 5px;
+}
+
+button{
+    font-size: 20px;
+}
+
+.MarkDLabel{
+    font-size: 26px;
+}
+
+.left{
+    text-align: left;
+    vertical-align: top;
+}
+
+.right{
+    text-align: right;
 }

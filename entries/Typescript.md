@@ -1,2 +1,20 @@
-iTS sO gOOD
-
+A language that is similar to [JavaScript](/wiki/JavaScript) but much easier and more Fun to use.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

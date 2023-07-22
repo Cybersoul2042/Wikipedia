@@ -1,9 +1,9 @@
 {% load static %}
+{% load markdownify %}
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +12,19 @@
     </head>
     <body>
         <h1>{{ EntryTitle }}</h1>
-        <md-block>
-            <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-            {{ pageContent }}
-            <script src="prism.js"></script>
-        </md-block>
-        <a href="{% url 'EntryEdit' EntryTitle %}">Edit Page</a>
+       
+            
+        <div class="PageContent">
+            {{ pageContent | markdownify }}
+        </div>
+            
+        
+        
         <label>You Can Also Visit: </label>
         <ul>
-            <li>
-                <a href="{% url 'index' %}">Home</a>
-            </li>
-        </ul>
-        
-        
+            <li style="margin-bottom: 5px;"><a href="{% url 'EntryEdit' EntryTitle %}">Edit Page</a></li>
+            
+            <li><a href="{% url 'index' %}">Go Home</a></li>
+        </ul>    
     </body>
 </html>

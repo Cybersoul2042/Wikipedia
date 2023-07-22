@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from markdown2 import Markdown
+import markdown2
 import random
 
 from . import util
-
 
 def index(request):
     if request.method == "POST":
@@ -45,8 +46,12 @@ def ShowPage(request, entry):
 
 def EditPage(request, entry):
     EntryContent = util.get_entry(entry)
+    if request.method == "POST":
+        content = request.POST.get('text')
+        util.save_entry(entry, content)
+        return HttpResponseRedirect(reverse('EntryPage', args=[entry]))
     return render(request, 'encyclopedia/EditEntry.html',{
-        "pageContent": EntryContent.replace(f'# "{entry}"', ''),
+        "pageContent": EntryContent,
         "Title": entry
     })       
 
