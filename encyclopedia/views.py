@@ -11,12 +11,26 @@ def index(request):
     if request.method == "POST":
         title = request.POST.get("q")
 
-        if title not in util.list_entries():
-            return render(request, "encyclopedia/index.html",{
-                    "message": "Entry Not Found"
-            })
+        # if title not in util.list_entries():
+        #     return render(request, "encyclopedia/index.html",{
+        #             "message": "Entry Not Found"
+        #     })
+        if title in util.list_entries():
+            HttpResponseRedirect(reverse('EntryPage', args=[title]))
         else:
-            return HttpResponseRedirect(reverse('EntryPage', args=[title]))
+            resultEntries = []
+            for entry in util.list_entries():
+                if title.casefold() in entry.casefold():
+                    resultEntries.append(entry)
+            if resultEntries != [] :
+                return render(request, 'encyclopedia/searchResult.html', {
+                    "entries": resultEntries,
+                    "random": random.choice(util.list_entries())
+                })
+            else:
+                return render(request, "encyclopedia/index.html", {
+                    "message": "No Entry Found"
+                })
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(),
         "random": random.choice(util.list_entries())
@@ -53,5 +67,5 @@ def EditPage(request, entry):
     return render(request, 'encyclopedia/EditEntry.html',{
         "pageContent": EntryContent,
         "Title": entry
-    })       
+    })
 
